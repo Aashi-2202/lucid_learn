@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 .vscode/
 *.csv
+# Python packaging artifacts
+*.egg-info/
+build/
+dist/

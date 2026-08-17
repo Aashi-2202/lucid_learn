@@ -256,8 +256,10 @@ class TemporalMetricFrame:
         """Bootstrap CI per (group, metric) so small/sparse windows can be
         flagged as low-confidence downstream (feeds Objective 2's gating)."""
         n = len(y_true)
-        if n < 10:  # not enough to bootstrap meaningfully
+        if n < 10 or self.n_bootstrap <= 0:  # not enough data, or bootstrap disabled
             return None
+        # if n < 10:  # not enough to bootstrap meaningfully
+        #     return None
 
         boot_results = []
         idx = np.arange(n)
